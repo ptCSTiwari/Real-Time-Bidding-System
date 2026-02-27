@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    color: #386fb7;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 680px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #38bdf8;
+    letter-spacing: 2px;
+}
+
+.card {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.08);
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.2);
+}
+
+#price {
+    font-size: 38px;
+    font-weight: 700;
+    color: #22c55e;
+    margin: 10px 0;
+}
+
+#leader {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #facc15;
+}
+
+input {
+    width: 38%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    margin-right: 10px;
+    outline: none;
+    background: #2600ff;
+    color: rgb(255, 255, 255);
+}
+
+button {
+    padding: 14px 22px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+#bidBtn {
+    background: linear-gradient(45deg, #22c55e, #16a34a);
+    color: white;
+}
+
+#bidBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #22c55e;
+}
+
+.logout {
+    background: #ef4444;
+    color: white;
+    margin-top: 20px;
+}
+
+ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+ul li {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+}
+
+.hero {
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 48px;
+    color: #38bdf8;
+}
+
+.subtitle {
+    margin-top: 20px;
+    opacity: 0.8;
+    font-size: 18px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 16px 30px;
+    background: linear-gradient(45deg, #38bdf8, #0ea5e9);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px #38bdf8;
+}
+
+/* ========================= */
+/* GLOBAL PERSONAL BRANDING */
+/* ========================= */
+
+.personal-footer {
+    text-align: center;
+    padding: 70px 20px;
+    margin-top: 80px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.profile-wrapper {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 20px auto;
+}
+
+.profile-pic {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    border: 3px solid #38bdf8;
+}
+
+.glow-ring {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+    animation: pulseGlow 2.5s infinite ease-in-out;
+    top: -10px;
+    left: -10px;
+    z-index: 1;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(0.95); opacity: 0.6; }
+    50% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.6; }
+}
+
+.dev-name {
+    font-size: 20px;
+    color: #38bdf8;
+    margin-bottom: 5px;
+}
+
+.dev-username {
+    color: #94a3b8;
+    margin-bottom: 15px;
+}
+
+.dev-links a {
+    margin: 0 10px;
+    color: #22c55e;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.dev-links a:hover {
+    color: #f97316;
+    text-shadow: 0 0 10px #f97316;
+}
+
+.dev-tagline {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #64748b;
+}

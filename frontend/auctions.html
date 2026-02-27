@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Auctions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Available Auctions</h2>
+    <div id="auctionList"></div>
+</div>
+
+<!-- ============================= -->
+<!-- GLOBAL PERSONAL BRANDING -->
+<!-- ============================= -->
+
+<footer class="personal-footer">
+
+    <div class="profile-wrapper">
+        <div class="glow-ring"></div>
+        <img src="assets/profile.jpg" class="profile-pic" alt="Pushpendra Tiwari">
+    </div>
+
+    <h3 class="dev-name">Pushpendra Tiwari</h3>
+    <p class="dev-username">@ptcstiwari</p>
+
+    <div class="dev-links">
+        <a href="https://www.linkedin.com/in/ptcstiwari" target="_blank">LinkedIn</a>
+        <a href="https://github.com/ptcstiwari" target="_blank">GitHub</a>
+        <a href="https://leetcode.com/ptcstiwari" target="_blank">LeetCode</a>
+        <a href="mailto:pushpt109@gmail.com">pushpt109@gmail.com</a>
+    </div>
+
+    <p class="dev-tagline">
+        Real-Time Bidding System | FastAPI | WebSockets | Redis Pub/Sub | Row-Level Locking
+    </p>
+
+</footer>
+
+<script>
+const API_BASE = "http://localhost:8000";
+
+async function loadAuctions() {
+    const res = await fetch(`${API_BASE}/auctions`);
+    const auctions = await res.json();
+
+    const container = document.getElementById("auctionList");
+    container.innerHTML = "";
+
+    auctions.forEach(auction => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+            <h3>${auction.product_name}</h3>
+            <p><strong>Current Price:</strong> ₹${auction.current_price}</p>
+            <p><strong>Status:</strong> ${auction.status}</p>
+            <button class="btn" onclick="joinAuction(${auction.id})">
+                Enter Live Auction →
+            </button>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function joinAuction(id) {
+    window.location.href = `dashboard.html?auction_id=${id}`;
+}
+
+window.onload = loadAuctions;
+</script>
+
+</body>
+</html>

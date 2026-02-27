@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Auction Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>LIVE AUCTION ROOM</h2>
+
+    <div class="card">
+        <div id="status">Status: LIVE</div>
+        <div id="price">Current Price: ₹0</div>
+        <div id="leader">Leading Bidder: -</div>
+        <div id="timer"></div>
+    </div>
+
+    <div class="card bid-section">
+        <input id="bidAmount" type="number" placeholder="Enter bid amount" min="1">
+        <button id="bidBtn" onclick="placeBid()">Place Bid</button>
+    </div>
+
+    <div class="card">
+        <h3>Recent Bids</h3>
+        <ul id="bidHistory"></ul>
+    </div>
+
+    <button onclick="logout()" class="logout">Logout</button>
+
+</div>
+
+<!-- ============================= -->
+<!-- PERSONAL BRANDING SECTION -->
+<!-- ============================= -->
+
+<footer class="personal-footer">
+
+    <div class="profile-wrapper">
+        <div class="glow-ring"></div>
+        <img src="assets/profile.jpg" class="profile-pic" alt="Pushpendra Tiwari">
+    </div>
+
+    <h3 class="dev-name">Pushpendra Tiwari</h3>
+    <p class="dev-username">@ptcstiwari</p>
+
+    <div class="dev-links">
+        <a href="https://www.linkedin.com/in/ptcstiwari" target="_blank">LinkedIn</a>
+        <a href="https://leetcode.com/ptcstiwari" target="_blank">LeetCode</a>
+        <a href="https://github.com/ptcstiwari" target="_blank">GitHub</a>
+        <a href="mailto:pushpt109@gmail.com">pushpt109@gmail.com</a>
+    </div>
+
+    <p class="dev-tagline">
+        Real-Time Bidding Engine | FastAPI | WebSockets | Redis Pub/Sub | Row-Level Locking
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

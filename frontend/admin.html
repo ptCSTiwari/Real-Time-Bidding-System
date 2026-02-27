@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Control Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>ADMIN CONTROL PANEL</h2>
+
+    <div class="card">
+        <label>Select Auction:</label>
+        <select id="auctionSelect"></select>
+        <button onclick="loadAuctionStats()">Load Stats</button>
+    </div>
+
+    <div class="card">
+        <div id="adminStatus">Status: -</div>
+        <div id="adminPrice">Current Price: ₹-</div>
+        <div id="adminTotalBids">Total Bids: -</div>
+    </div>
+
+    <div class="card admin-actions">
+        <button onclick="pauseAuction()">Pause</button>
+        <button onclick="resumeAuction()">Resume</button>
+        <button onclick="closeAuction()">Close</button>
+        <input type="number" id="extendMinutes" placeholder="Minutes">
+        <button onclick="extendAuction()">Extend</button>
+    </div>
+
+    <button onclick="logout()" class="logout">Logout</button>
+
+</div>
+
+<script src="admin.js">
+
+// const payload = JSON.parse(atob(data.access_token.split('.')[1]));
+
+// if (payload.role === "ADMIN") {
+//     window.location.href = "/admin.html";
+// } else {
+//     window.location.href = "/auctions.html";
+// }
+</script>
+
+</body>
+</html>

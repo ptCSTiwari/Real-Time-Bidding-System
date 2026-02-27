@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login | ReGrip Auction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hero">
+    <h2>Dealer Login</h2>
+
+    <form id="loginForm">
+        <input id="email" placeholder="Email" type="email" required>
+        <br><br>
+
+        <input id="password" placeholder="Password" type="password" required>
+        <br><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p id="error" style="color:red;"></p>
+</div>
+
+<!-- ============================= -->
+<!-- GLOBAL PERSONAL BRANDING -->
+<!-- ============================= -->
+
+<footer class="personal-footer">
+
+    <div class="profile-wrapper">
+        <div class="glow-ring"></div>
+        <img src="assets/profile.jpg" class="profile-pic" alt="Pushpendra Tiwari">
+    </div>
+
+    <h3 class="dev-name">Pushpendra Tiwari</h3>
+    <p class="dev-username">@ptcstiwari</p>
+
+    <div class="dev-links">
+        <a href="https://www.linkedin.com/in/ptcstiwari" target="_blank">LinkedIn</a>
+        <a href="https://github.com/ptcstiwari" target="_blank">GitHub</a>
+        <a href="https://leetcode.com/ptcstiwari" target="_blank">LeetCode</a>
+        <a href="mailto:pushpt109@gmail.com">pushpt109@gmail.com</a>
+    </div>
+
+    <p class="dev-tagline">
+        Real-Time Bidding System | FastAPI | WebSockets | Redis Pub/Sub | Row-Level Locking
+    </p>
+
+</footer>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const errorBox = document.getElementById("error");
+
+    errorBox.innerText = "";
+
+    if (!email || !password) {
+        errorBox.innerText = "Email and password required";
+        return;
+    }
+
+    try {
+        const response = await fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+                username: email,
+                password: password
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            errorBox.innerText = data.detail || "Login failed";
+            return;
+        }
+
+        const token = data.access_token;
+        localStorage.setItem("token", token);
+
+        // Decode JWT safely
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const payload = JSON.parse(atob(base64));
+
+        console.log("Logged in role:", payload.role);
+
+        // Case-insensitive role check
+        if (payload.role && payload.role.toUpperCase() === "ADMIN") {
+            window.location.href = "/admin.html";
+        } else {
+            window.location.href = "/auctions.html";
+        }
+
+    } catch (error) {
+        errorBox.innerText = "Server error. Try again.";
+    }
+});
+</script>
+
+</body>
+</html>
